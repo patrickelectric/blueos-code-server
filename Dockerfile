@@ -10,9 +10,7 @@ COPY register_service /service/register_service
 
 COPY start.sh start.sh
 
-USER openvscode-server
-
-LABEL version="1.0.1"
+LABEL version="1.0.2"
 LABEL permissions='{\
   "ExposedPorts": {\
     "80/tcp": {}\
