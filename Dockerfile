@@ -8,11 +8,10 @@ RUN touch /home/workspace/.bashrc
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
   -t agnoster \
   -p colored-man-pages \
-  -p fzf \
   -p git \
   -p man
 
-RUN echo "code" > /etc/hostname
+RUN echo "zsh" > /home/workspace/.bashrc
 RUN mkdir -p /service
 COPY tmux.conf /etc/tmux.conf
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -20,7 +19,7 @@ COPY register_service /service/register_service
 
 COPY start.sh start.sh
 
-LABEL version="1.0.4"
+LABEL version="1.0.6"
 LABEL permissions='{\
   "ExposedPorts": {\
     "80/tcp": {}\
@@ -30,6 +29,7 @@ LABEL permissions='{\
     "Binds": [\
       "/usr/blueos/userdata:/home/workspace/userdata:rw",\
       "/usr/blueos/openvscode:/openvscode:rw",\
+      "/etc/hostname:/etc/hostname:ro",\
       "/:/home/workspace/host:rw"\
     ],\
     "PortBindings": {\
