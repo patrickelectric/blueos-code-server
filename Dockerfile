@@ -10,11 +10,9 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
   -p colored-man-pages \
   -p fzf \
   -p git \
-  -p man \
-  -p ssh-agent \
-  -p zsh_reload \
-  -p zsh-autosuggestions
+  -p man
 
+RUN echo "code" > /etc/hostname
 RUN mkdir -p /service
 COPY tmux.conf /etc/tmux.conf
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -61,4 +59,5 @@ LABEL tags='[\
   "c++"\
 ]'
 
+SHELL ["/bin/zsh", "-c"]
 ENTRYPOINT ["/home/workspace/start.sh"]
