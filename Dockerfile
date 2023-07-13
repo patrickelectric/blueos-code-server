@@ -12,12 +12,18 @@ COPY start.sh start.sh
 
 USER openvscode-server
 
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL permissions='{\
   "ExposedPorts": {\
     "80/tcp": {}\
   },\
   "HostConfig": {\
+    "Privileged": true,\
+    "Binds": [\
+      "/usr/blueos/userdata:/home/workspace/userdata:rw",\
+      "/usr/blueos/openvscode:/openvscode:rw",\
+      "/:/home/workspace/host:rw"\
+    ],\
     "PortBindings": {\
       "80/tcp": [\
         {\
@@ -42,7 +48,7 @@ LABEL tags='[\
   "vscode",\
   "python",\
   "rust",\
-  "c++",\
+  "c++"\
 ]'
 
 ENTRYPOINT ["/home/workspace/start.sh"]
