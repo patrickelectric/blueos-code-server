@@ -4,13 +4,24 @@ USER root
 
 RUN apt update && apt install -y wget tar nano nginx
 
+RUN touch /home/workspace/.bashrc
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
+  -t agnoster \
+  -p colored-man-pages \
+  -p fzf \
+  -p git \
+  -p man \
+  -p ssh-agent \
+  -p zsh_reload \
+  -p zsh-autosuggestions
+
 RUN mkdir -p /service
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY register_service /service/register_service
 
 COPY start.sh start.sh
 
-LABEL version="1.0.3"
+LABEL version="1.0.4"
 LABEL permissions='{\
   "ExposedPorts": {\
     "80/tcp": {}\
