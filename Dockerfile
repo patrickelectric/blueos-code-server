@@ -2,7 +2,7 @@ FROM gitpod/openvscode-server:1.72.2
 
 USER root
 
-RUN apt update && apt install -y wget tar nano nginx
+RUN apt update && apt install -y wget tar nano nginx tmux
 
 RUN touch /home/workspace/.bashrc
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
@@ -16,6 +16,7 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
   -p zsh-autosuggestions
 
 RUN mkdir -p /service
+COPY tmux.conf /etc/tmux.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY register_service /service/register_service
 
