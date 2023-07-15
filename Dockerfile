@@ -12,6 +12,19 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
   -p man
 
 RUN echo "zsh" > /home/workspace/.bashrc
+
+# Get Python
+RUN sudo apt-get update
+RUN sudo apt-get -y install python3.11
+RUN sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 2
+RUN sudo update-alternatives --config python3
+RUN echo "alias python='python3'" >> /home/workspace/.bashrc
+RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
+
+# Get Rust
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+RUN echo 'source $HOME/.cargo/env' >> /home/workspace/.bashrc
+
 RUN mkdir -p /service
 COPY tmux.conf /etc/tmux.conf
 COPY nginx.conf /etc/nginx/nginx.conf
