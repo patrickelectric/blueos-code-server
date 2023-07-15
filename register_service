@@ -3,7 +3,7 @@
     "description": "This project provides a version of VS Code that runs a server on a remote machine and allows access through a modern web browser. It's based on the very same architecture used by Gitpod or GitHub Codespaces at scale.",
     "icon": "mdi-microsoft-visual-studio-code",
     "company": "Blue Robotics",
-    "version": "1.0.7",
+    "version": "1.1.0",
     "new_page": true,
     "webpage": "https://github.com/patrickelectric/BlueOS-code-server",
     "api": "/v1.0/docs"
