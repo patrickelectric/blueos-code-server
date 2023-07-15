@@ -52,6 +52,7 @@ LABEL permissions='{\
       "/var/run/docker.sock:/var/run/docker.sock:rw",\
       "/usr/bin/docker:/usr/bin/docker:ro",\
       "/etc/hostname:/etc/hostname:ro",\
+      "/dev:/dev:rw",\
       "/:/home/workspace/host:rw"\
     ],\
     "PortBindings": {\
