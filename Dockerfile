@@ -11,11 +11,8 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
   -p git \
   -p man
 
-RUN echo "zsh" > /home/workspace/.bashrc
-
 # Get C++
 RUN apt-get install -y gcc-12
-RUN echo "alias gcc='gcc-12'" >> /home/workspace/.bashrc
 RUN apt-get install -y --no-install-recommends cmake make
 
 # Get Python
@@ -23,12 +20,17 @@ RUN sudo apt-get update
 RUN sudo apt-get -y install python3.11
 RUN sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 2
 RUN sudo update-alternatives --config python3
-RUN echo "alias python='python3'" >> /home/workspace/.bashrc
-RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
+COPY get-pip.py /get-pip.py
+RUN python3 /get-pip.py && rm /get-pip.py
 
 # Get Rust
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 RUN echo 'source $HOME/.cargo/env' >> /home/workspace/.bashrc
+
+# This need to be the last step
+RUN echo "zsh" >> /home/workspace/.bashrc
+RUN ln -s /usr/bin/python3 /usr/bin/python
+RUN ln -s /usr/bin/gcc-12 /usr/bin/gcc
 
 RUN mkdir -p /service
 COPY tmux.conf /etc/tmux.conf
