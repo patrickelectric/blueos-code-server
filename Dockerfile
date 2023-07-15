@@ -13,6 +13,11 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 
 RUN echo "zsh" > /home/workspace/.bashrc
 
+# Get C++
+RUN apt-get install -y gcc-12
+RUN echo "alias gcc='gcc-12'" >> /home/workspace/.bashrc
+RUN apt-get install -y --no-install-recommends cmake make
+
 # Get Python
 RUN sudo apt-get update
 RUN sudo apt-get -y install python3.11
