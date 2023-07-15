@@ -29,6 +29,8 @@ LABEL permissions='{\
     "Binds": [\
       "/usr/blueos/userdata:/home/workspace/userdata:rw",\
       "/usr/blueos/openvscode:/openvscode:rw",\
+      "/var/run/docker.sock:/var/run/docker.sock:rw",\
+      "/usr/bin/docker:/usr/bin/docker:ro",\
       "/etc/hostname:/etc/hostname:ro",\
       "/:/home/workspace/host:rw"\
     ],\
