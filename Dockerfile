@@ -12,7 +12,7 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
   -p man
 
 # Get C++
-RUN apt-get install -y gcc-12
+RUN apt-get install -y gcc-12 g++-12
 RUN apt-get install -y --no-install-recommends cmake make
 
 # Get Python
@@ -31,6 +31,7 @@ RUN echo 'source $HOME/.cargo/env' >> /home/workspace/.bashrc
 RUN echo "zsh" >> /home/workspace/.bashrc
 RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN ln -s /usr/bin/gcc-12 /usr/bin/gcc
+RUN ln -s /usr/bin/g++-12 /usr/bin/g++
 
 RUN mkdir -p /service
 COPY tmux.conf /etc/tmux.conf
