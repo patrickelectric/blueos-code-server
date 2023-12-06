@@ -41,9 +41,12 @@ COPY tmux.conf /etc/tmux.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY register_service /service/register_service
 
-run mkdir -p /home/workspace/.local
+RUN mkdir -p /home/workspace/.local
 
 COPY start.sh /start.sh
+
+EXPOSE 100-65535/tcp
+EXPOSE 100-65535/udp
 
 LABEL version="1.1.2"
 LABEL permissions='{\
@@ -53,12 +56,9 @@ LABEL permissions='{\
   "HostConfig": {\
     "Privileged": true,\
     "Binds": [\
-      "/usr/blueos/userdata/openvscode/.zshenv:/home/workspace/.zshenv:rw",\
-      "/usr/blueos/userdata/openvscode/.zshrc:/home/workspace/.zshrc:rw",\
-      "/usr/blueos/userdata/openvscode/.zsh_history:/home/workspace/.zsh_history:rw",\
       "/usr/blueos/userdata/openvscode/.cache:/home/workspace/.cache:rw",\
       "/usr/blueos/userdata/openvscode/.local:/home/workspace/.local:rw",\
-      "/usr/blueos/userdata:/home/workspace/userdata:rw",\
+      "/usr/blueos/userdata:/userdata:rw",\
       "/usr/blueos/openvscode:/openvscode:rw",\
       "/var/run/docker.sock:/var/run/docker.sock:rw",\
       "/usr/bin/docker:/usr/bin/docker:ro",\
