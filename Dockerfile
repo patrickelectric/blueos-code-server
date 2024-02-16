@@ -80,7 +80,7 @@ LABEL authors='[\
         "email": "patrickelectric@gmail.com"\
     }\
 ]'
-LABEL readme="https://raw.githubusercontent.com/patrickelectric/blueos-code-server/master/README.md"
+LABEL readme="https://raw.githubusercontent.com/BlueOS-Community/blueos-code-server/master/README.md"
 LABEL type="other"
 LABEL tags='[\
   "code",\
