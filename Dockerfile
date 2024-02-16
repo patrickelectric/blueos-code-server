@@ -56,10 +56,9 @@ LABEL permissions='{\
   "HostConfig": {\
     "Privileged": true,\
     "Binds": [\
-      "/usr/blueos/userdata/openvscode/.cache:/home/workspace/.cache:rw",\
-      "/usr/blueos/userdata/openvscode/.local:/home/workspace/.local:rw",\
-      "/usr/blueos/userdata:/userdata:rw",\
-      "/usr/blueos/openvscode:/openvscode:rw",\
+      "/usr/blueos/extensions/openvscode/.cache:/home/workspace/.cache:rw",\
+      "/usr/blueos/extensions/openvscode/.local:/home/workspace/.local:rw",\
+      "/usr/blueos/extensions/openvscode:/openvscode:rw",\
       "/var/run/docker.sock:/var/run/docker.sock:rw",\
       "/usr/bin/docker:/usr/bin/docker:ro",\
       "/etc/hostname:/etc/hostname:ro",\
