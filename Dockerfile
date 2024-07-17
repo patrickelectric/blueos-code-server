@@ -73,6 +73,8 @@ LABEL permissions='{\
         }\
       ]\
     }\
+    "CpuPeriod": 100000,\
+    "CpuQuota": 100000\
   }\
 }'
 LABEL authors='[\
