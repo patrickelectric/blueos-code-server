@@ -54,6 +54,9 @@ LABEL permissions='{\
     "80/tcp": {}\
   },\
   "HostConfig": {\
+    "ExtraHosts": [\
+      "blueos.local:host-gateway"\
+    ],\
     "Privileged": true,\
     "Binds": [\
       "/usr/blueos/userdata/openvscode/.cache:/home/workspace/.cache:rw",\
